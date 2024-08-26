@@ -1,0 +1,11 @@
+@import '../css/variables.scss';
+
+.container {
+  width: 786px;
+  height: 84px;
+  border: 1px solid;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
