@@ -3,9 +3,53 @@
 .container {
   width: 786px;
   height: 84px;
-  border: 1px solid;
   position: fixed;
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .input_div {
+    position: relative;
+    width: 786px;
+    input {
+      font-size: 16px;
+      margin-bottom: 12px;
+      width: 100%;
+      padding: 16px;
+      border-radius: 41px;
+      border: 1px solid #c9c9c9;
+      outline: none;
+      &:focus {
+        border: 1px solid #b5e7a8;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+        .input_error {
+          border: 1px solid #ff0000;
+        }
+      }
+    }
+    .text_length {
+      position: absolute;
+      height: 51px;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #7f7f7f;
+      right: 50px;
+    }
+    > span {
+      position: absolute;
+      right: 15px;
+      height: 51px;
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+    }
+  }
+  > p {
+    color: #a5a5a5;
+    font-size: 12px;
+    text-align: center;
+  }
 }

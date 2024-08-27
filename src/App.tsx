@@ -7,6 +7,7 @@ import { Dialog } from './page/Dialog';
 import { Extension } from './page/Extension';
 import { Navigation } from './component/Navigation';
 import { InputBox } from './component/InputBox';
+import { InpuBoxProvider } from './hook/useInputBox';
 
 function App() {
 
@@ -25,13 +26,17 @@ export default App;
 const MainRouter = () => {
   return (
     <div className={styles.container}>
-      <Navigation />
-      <Routes>
-        <Route path='/main' element={<Main/>}/>
-        <Route path='/dialog' element={<Dialog/>}/>
-        <Route path='/extension' element={<Extension/>}/>
-      </Routes>
-      <InputBox/>
+      <InpuBoxProvider>
+        <>
+        <Navigation />
+        <Routes>
+          <Route path='/main' element={<Main/>}/>
+          <Route path='/dialog' element={<Dialog/>}/>
+          <Route path='/extension' element={<Extension/>}/>
+        </Routes>
+        <InputBox/>
+        </>
+      </InpuBoxProvider>
     </div>
   );
 }
