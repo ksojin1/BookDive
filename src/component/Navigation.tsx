@@ -8,9 +8,9 @@ export const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    setNavOpen(false);
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   setNavOpen(false);
+  // }, [location.pathname]);
 
   return (
     <>
