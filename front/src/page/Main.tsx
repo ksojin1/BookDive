@@ -1,6 +1,8 @@
 import React from "react";
 import styles from './Main.module.scss';
 import { Route, useNavigate } from "react-router-dom";
+import test from './Loading_bookdive.json';
+import Lottie from "lottie-react";
 
 export const Main = () => {
 
@@ -8,7 +10,8 @@ export const Main = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.text_div}>
+      <Lottie style={{ width: '52px', height: '52px' }} animationData={test} loop={true}/>
+      {/* <div className={styles.text_div}>
         <h1>안녕하세요</h1>
         <h2>최근에 읽으신 책에 대해<br/>어떤 이야기를 나누고 싶으신가요?</h2>
         <span>예시보기</span>
@@ -22,7 +25,7 @@ export const Main = () => {
           <h3>책의 연장선<span className="material-symbols-outlined">chevron_right</span></h3>
           <p>책을 새로운 시각으로 살펴보며<br/>독서의 폭을 확장해요</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
