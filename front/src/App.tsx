@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './App.module.scss';
 import { Route, Routes } from 'react-router-dom';
 import { Intro } from './page/Intro';
@@ -24,17 +24,20 @@ function App() {
 export default App;
 
 const MainRouter = () => {
+
   return (
     <div className={styles.container}>
       <InpuBoxProvider>
         <>
         <Navigation />
-        <Routes>
-          <Route path='/main' element={<Main/>}/>
-          <Route path='/dialog' element={<Dialog/>}/>
-          <Route path='/extension' element={<Extension/>}/>
-        </Routes>
-        <InputBox/>
+        <div className={styles.content_div}>
+          <Routes>
+            <Route path='/main' element={<Main/>}/>
+            <Route path='/dialog' element={<Dialog/>}/>
+            <Route path='/extension' element={<Extension/>}/>
+          </Routes>
+          <InputBox/>
+        </div>
         </>
       </InpuBoxProvider>
     </div>

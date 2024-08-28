@@ -2,6 +2,9 @@
 $main_color: #86C95C;
 $font_color: #262626;
 
+// size
+$content_width: 786px;
+
 // 드래그 막기
 @mixin blockdrag {
   -webkit-user-select:none;
