@@ -1,0 +1,63 @@
+@import '../css/variables.scss';
+
+.container {
+  width: 100%;
+  min-width: $content_width;
+  height: 100%;
+  border: 2px solid;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  .chat_wrap {
+    width: $content_width;
+    border: 1px solid;
+    padding-bottom: 400px;
+    padding-top: 80px;
+    overflow: auto;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    display: grid;
+    grid-template-rows: 1fr wrap;
+    #B, #C { // 챗봇
+      justify-self: start;
+    }
+    #U { // 유저
+      justify-self: end;
+      .text_div > p{
+        padding: 12px 20px;
+        border-radius: 24px;
+        background-color: $main_color;
+        color: white;
+        font-size: 16px;
+      }
+    }
+    > div {
+      position: relative;
+      margin-bottom: 40px;
+      .chat_div {
+        display: flex;
+        .dive_logo {
+          width: 36px;
+          height: 36px;
+          border-radius: 18px;
+          background-color: #eeeeee;
+          margin-right: 24px;
+        }
+        .text_div {
+          > h4 { // 이름
+            font-size: 16px;
+            font-family: 'bold';
+            height: 36px;
+            display: flex;
+            align-items: center;
+          }
+          > p {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

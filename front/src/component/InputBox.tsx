@@ -5,7 +5,7 @@ import { NAV_WIDTH } from "../App";
 
 export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
 
-  const { value, setValue, placeholder, setStatus, status, queryList } = useInputBox();
+  const { value, setValue, placeholder, setStatus, status, queryList, setSendFlag } = useInputBox();
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.currentTarget.value;
@@ -43,7 +43,7 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
         {status === 'error' || status === 'disabled' ? (
           <span style={{ color: '#c9c9c9' }} className="material-symbols-rounded">send</span>
         ):(
-          <span className="material-symbols-rounded">send</span>
+          <span onClick={() => setSendFlag(true)} className="material-symbols-rounded">send</span>
         )}
         
         <input 
