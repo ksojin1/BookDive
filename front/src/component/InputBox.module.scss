@@ -1,18 +1,76 @@
 @import '../css/variables.scss';
 
 .container {
-  width: 786px;
-  height: 84px;
-  position: fixed;
+  width: 100%;
+  min-width: $content_width;
+  width: 100%;
+  position: absolute;
   bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  transition: padding-left 0.3s;
+  #disabled {
+    > input:disabled {
+      &::placeholder {
+        color: #c9c9c9;
+      }
+    }
+  }
+  .queryList_div {
+    border-radius: 4px;
+    border: 1px solid #c9c9c9;
+    width: $content_width;
+    margin-bottom: 20px;
+    padding: 20px;
+    > h4 {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-family: 'bold';
+      color: $main_color;
+      margin-bottom: 16px;
+      > span {
+        font-size: 24px;
+        margin-right: 5px;
+      }
+    }
+    > ul {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4px 12px;
+        font-size: 16px;
+        > span {
+          background-color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 49px;
+          height: 28px;
+          border: 1px solid #c9c9c9;
+          font-family: 'bold';
+          border-radius: 14px;
+          font-size: 14px;
+          cursor: pointer;
+          &:hover {
+            background-color: $main_color;
+            color: white;
+            border: none;
+          }
+        }
+      }
+    }
+  }
   .input_div {
+    width: $content_width;
     position: relative;
-    width: 786px;
     input {
       font-size: 16px;
       margin-bottom: 12px;
@@ -42,11 +100,12 @@
       display: flex;
       align-items: center;
       font-size: 24px;
+      cursor: pointer;
     }
-  }
-  > p {
-    color: #a5a5a5;
-    font-size: 12px;
-    text-align: center;
+    > p {
+      color: #a5a5a5;
+      font-size: 12px;
+      text-align: center;
+    }
   }
 }

@@ -17,7 +17,7 @@
   }
   > h1 {
     font-size: 24px;
-    font-family: 'bold';
+    font-family: 'black';
     color: $main_color;
   }
 }
@@ -58,18 +58,28 @@
     .crt_menu {
       background-color: #1b3e74;
       color: white;
-      justify-content: space-between;
-      > span {
-        background-color: white;
-        color: #1b3e74;
-        font-family: 'bold';
-        font-size: 12px;
-        width: 40px;
-        height: 22px;
-        border-radius: 11px;
+      position: relative;
+      .icon_div {
         display: flex;
         align-items: center;
-        justify-content: center;
+        > p { // 대화중
+          background-color: white;
+          color: #1b3e74;
+          font-family: 'bold';
+          font-size: 12px;
+          width: 40px;
+          height: 22px;
+          border-radius: 11px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 8px;  
+        }
+        > span {
+          font-size: 18px;
+          position: absolute;
+          right: 10px;
+        }
       }
     }
   }

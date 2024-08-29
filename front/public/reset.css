@@ -55,6 +55,7 @@ span {
 @font-face { font-family: 'Light'; src: url('./font/Pretendard-Light.woff') format('woff'); }
 @font-face { font-family: 'Medium'; src: url('./font/Pretendard-Medium.woff') format('woff'); }
 @font-face { font-family: 'SemiBold'; src: url('./font/Pretendard-SemiBold.woff') format('woff'); }
+@font-face { font-family: 'Black'; src: url('./font/Pretendard-Black.woff') format('woff'); }
 
 body {
 	font-family: 'Regular';

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from './Navigation.module.scss';
 import { useLocation, useNavigate } from "react-router-dom";
+import { NAV_WIDTH } from "../App";
 
-const NAV_WIDTH = 260;
-export const Navigation = () => {
-  const [navOpen, setNavOpen] = useState<boolean>(false);
+export const Navigation = ({ navOpen, setNavOpen } : { navOpen: boolean, setNavOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -15,7 +14,7 @@ export const Navigation = () => {
   return (
     <>
     <div className={styles.menu_btn_div} style={{ width: `${NAV_WIDTH}px` }}>
-      <span className="material-symbols-outlined" onClick={() => setNavOpen(!navOpen)}>menu</span>
+      <span className="material-symbols-outlined" onClick={() => setNavOpen((prev) => !prev)}>menu</span>
       <h1>BOOKDIVE</h1>
     </div>
     <div className={styles.menu_div} 
@@ -25,13 +24,23 @@ export const Navigation = () => {
         <h3>홈</h3>
       </div>
       <ul className={styles.menu_list}>
-        <li className={location.pathname.includes('dialog') ? styles.crt_menu : ''} onClick={() => navigate(`${process.env.PUBLIC_URL}/dialog`)}>
+        <li className={location.pathname.includes('chat') ? styles.crt_menu : ''} onClick={() => navigate(`${process.env.PUBLIC_URL}/chat`)}>
           <p>책과의 대화</p>
-          {location.pathname.includes('dialog') && <span>대화중</span>}
+          {location.pathname.includes('chat') && (
+            <div className={styles.icon_div}>
+              <p>대화중</p>
+              <span className="material-symbols-rounded">edit_square</span>
+            </div>
+          )}
         </li>
         <li className={location.pathname.includes('extension') ? styles.crt_menu : ''} onClick={() => navigate(`${process.env.PUBLIC_URL}/extension`)}>
           <p>책의 연장선</p>
-          {location.pathname.includes('extension') && <span>대화중</span>}
+          {location.pathname.includes('extension') && (
+            <div className={styles.icon_div}>
+              <p>대화중</p>
+              <span className="material-symbols-rounded">edit_square</span>
+            </div>
+          )}
         </li>
       </ul>
     </div>

@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
-import styles from './Extension.module.scss';
+import React, { useEffect, useState } from "react";
+import styles from './Chat.module.scss';
 import { useInputBox } from "../hook/useInputBox";
+import { ChatType } from "../type";
 
-export const Extension = () => {
+export const Chat = () => {
 
   const { setStatus, setPlaceholder, setValue } = useInputBox();
+
+  const [chatList, setChatList] = useState<ChatType[]>([
+    { type: 0, text: '대화를 나눌 책의 이름이 무엇인가요?'},
+  ]);
 
   useEffect(() => {
     setValue('');
@@ -14,7 +19,7 @@ export const Extension = () => {
 
   return (
     <div className={styles.container}>
-      책의 연장선
+      책과 대화
     </div>
   );
 }

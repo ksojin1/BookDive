@@ -3,10 +3,11 @@
 .container {
   width: $content_width;
   height: 407px;
-  margin: 240px auto 0px auto;
+  margin: 0px auto;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  padding-top: 240px;
   .text_div {
     position: relative;
     h1 {
@@ -34,9 +35,8 @@
     }
   }
   .select_div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    display: flex;
+    justify-content: space-between;
     > div:nth-child(1) {
       background-color: #eef2d5;
     }
@@ -44,9 +44,11 @@
       background-color: #c7e0d2;
     }
     > div {
-      height: 218px;
+      width: 381px;      
+      height: 286px;
       border-radius: 4px;
       padding: 24px;
+      background-size: cover;
       h3 {
         font-size: 20px;
         font-family: 'bold';
