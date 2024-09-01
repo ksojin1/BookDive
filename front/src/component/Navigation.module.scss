@@ -30,6 +30,7 @@
   height: 100vh;
   background-color: #f7f7f7;
   transition: left 0.3s;
+  border-right: 1px solid #c9c9c9;
   @include blockdrag;
   .home {
     padding: 12px;
@@ -46,7 +47,7 @@
   }
   .menu_list {
     padding-left: 24px;
-    padding-right: 4px;
+    padding-right: 10px;
     > li {
       height: 44px;
       display: flex;

@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import styles from './Navigation.module.scss';
 import { useLocation, useNavigate } from "react-router-dom";
 import { NAV_WIDTH } from "../App";
+import { useAction, useUserInfo } from "../redux";
 
 export const Navigation = ({ navOpen, setNavOpen } : { navOpen: boolean, setNavOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const handleNewChatClick = () => {
+    return window.location.href = `${process.env.PUBLIC_URL}/chat`;
+  }
   // useEffect(() => {
   //   setNavOpen(false);
   // }, [location.pathname]);
@@ -27,7 +31,7 @@ export const Navigation = ({ navOpen, setNavOpen } : { navOpen: boolean, setNavO
         <li className={location.pathname.includes('chat') ? styles.crt_menu : ''} onClick={() => navigate(`${process.env.PUBLIC_URL}/chat`)}>
           <p>책과의 대화</p>
           {location.pathname.includes('chat') && (
-            <div className={styles.icon_div}>
+            <div className={styles.icon_div} onClick={handleNewChatClick}>
               <p>대화중</p>
               <span className="material-symbols-rounded">edit_square</span>
             </div>

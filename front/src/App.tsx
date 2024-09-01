@@ -9,10 +9,39 @@ import { Navigation } from './component/Navigation';
 import { InputBox } from './component/InputBox';
 import { InpuBoxProvider } from './hook/useInputBox';
 import { LoadingContextProvider } from './hook/useLoadingContext';
+import { getCookie, setCookie } from './cookie/cookies';
+import { User } from './type';
+import { useAction } from './redux';
 
 export const NAV_WIDTH = 260;
 
 function App() {
+
+  const { saveUser } = useAction();
+
+  const checkUser = () => {
+    const cookie = getCookie();
+    if (cookie) { // 기존아이디 redux 저장
+      const userInfo: User = {
+        id: cookie.userId,
+        bubbleCnt: 0,
+        endAt: cookie.endAt,
+      }
+      saveUser(userInfo);
+    } else { // 유저아이디 생성
+      const userId: string = `${Math.floor(new Date().getTime()+Math.random())}`;
+      const endAt = setCookie(userId);
+      saveUser({
+        id: userId,
+        bubbleCnt: 0,
+        endAt: endAt,
+      });
+    }
+  }
+
+  useEffect(() => {
+    checkUser();
+  }, []);
 
   return (
     <div className="App">

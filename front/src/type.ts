@@ -1,3 +1,23 @@
+import { AxiosHeaders } from "axios";
+
+export interface Payload {
+  code: number,
+  msg: string,
+  book?: string,
+  bookType?: string,
+  character?: string,
+  text?: string,
+  res1?: string,
+  res2?: string,
+  res3?: string,
+}
+
+export interface User { // 유저정보 리덕스 저장
+  id: string, // 유저아이디 -> cookie 저장
+  endAt: string, // 유효시간 끝나는 시점 -> cookie 저장
+  bubbleCnt: number, // 말풍선 횟수
+}
+
 export interface RequestType { // 서버요청
   userId: string, // cookie userId
   book: string, // 책이름
@@ -25,7 +45,37 @@ export interface ChatType { // 채팅 말풍선 타입
 }
 
 export interface BookInfo {
-  type: 0 | 1 | null, // 0: 문학, 1: 비문학, null: 정해지기 전
+  type: string, // 0: 문학, 1: 비문학, null: 정해지기 전
   title: string,
   character: string, // 등장인물 or 저자
+}
+
+export interface ReqBody { // 서버요청 Body
+	userId: string,
+	book: string,
+	bookType: string,
+	character : string,
+	text : string,
+}
+
+export interface ServerRes { // 서버응답
+  data: ResponseData,
+  status: number,
+  statusText: string,
+  config: any,
+  headers: AxiosHeaders,
+  request: XMLHttpRequest,
+}
+
+// response.data
+export interface ResponseData {
+  code: number,
+  msg: string,
+	character?: string,
+	res1?: string,
+	res3?: string,
+	book?: string,
+	res2?: string,
+	text?: string,
+	bookType?: string,
 }
