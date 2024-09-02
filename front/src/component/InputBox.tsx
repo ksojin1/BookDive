@@ -32,9 +32,9 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
             추천 답변
           </h4>
           <ul>
-            {queryList.map((query) => {
+            {queryList.map((query, idx) => {
               return (
-                <li>
+                <li key={idx}>
                   <p>{query}</p>
                   <span onClick={() => setValue(query)}>선택</span>
                 </li>

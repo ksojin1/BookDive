@@ -10,7 +10,7 @@ export const MAX_BUBBLE = 5;
 
 export const Chat = () => {
 
-  const { setStatus, setPlaceholder, setValue, sendFlag, setSendFlag, value, setQueryList } = useInputBox();
+  const { setStatus, setPlaceholder, setValue, sendFlag, setSendFlag, value, queryList, setQueryList } = useInputBox();
 
   const user = useUserInfo();
   const { chatStep1, chatStep2, chatStep3, chatStep4 } = useChat();
@@ -29,13 +29,15 @@ export const Chat = () => {
 
     if (!user) return;
 
+    if (queryList.length > 0) setQueryList([]);
+
     // step1
     if (chatList[chatList.length-1].step === 1) {
       const payload = await chatStep1(value);
       // 정상
       if (payload.code === 100 && payload.text && payload.book && payload.bookType) {
         newChatList[newChatList.length-1] = { 
-          step: chatList[chatList.length-1].step, code: 100, type: "B", text: payload.text, 
+          step: chatList[chatList.length-1].step+1, code: 100, type: "B", text: payload.text, 
         };
         setBookInfo({
           ...bookInfo,
@@ -63,7 +65,7 @@ export const Chat = () => {
       if (payload.code === 100 && payload.text && payload.character) {
 
         newChatList[newChatList.length-1] = { 
-          step: chatList[chatList.length-1].step, code: 100, type: "C", text: payload.text,
+          step: chatList[chatList.length-1].step+1, code: 100, type: "C", text: payload.text,
         };
 
         setBookInfo({
