@@ -4,6 +4,7 @@ import { useInputBox } from "../hook/useInputBox";
 import { BookInfo, ChatType } from "../type";
 import { useChat } from "../hook/useChat";
 import { useUserInfo } from "../redux";
+import { Modal } from "../component/Modal";
 
 export const MAX_BUBBLE = 5;
 
@@ -162,6 +163,7 @@ export const Chat = () => {
   }, [chatList]);
 
   return (
+    <>
     <div className={styles.container}>
       <div className={styles.chat_wrap}>
       {chatList.map((chat, idx) => {
@@ -184,5 +186,6 @@ export const Chat = () => {
       })}
       </div>
     </div>
+    </>
   );
 }

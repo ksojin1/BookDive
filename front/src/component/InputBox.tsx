@@ -54,7 +54,11 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
         </div>
       }
       <div id={styles[status]} className={styles.input_div}>
-        {status !== 'disabled' && <div className={styles.text_length}>{value.length > 30 ? 30 : value.length}/30자 이내</div>}
+        {status !== 'disabled' && (
+          <div className={styles.text_length} style={{ color: value.length > 30 ? '#ff0000' : '#7f7f7f' }}>
+            {value.length > 30 ? 30 : value.length}/30자 이내
+          </div>
+        )}
         {status === 'error' || status === 'disabled' ? (
           <span style={{ color: '#c9c9c9' }} className="material-symbols-rounded">send</span>
         ):(

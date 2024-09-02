@@ -8,7 +8,6 @@ import { Extension } from './page/Extension';
 import { Navigation } from './component/Navigation';
 import { InputBox } from './component/InputBox';
 import { InpuBoxProvider } from './hook/useInputBox';
-import { LoadingContextProvider } from './hook/useLoadingContext';
 import { getCookie, setCookie } from './cookie/cookies';
 import { User } from './type';
 import { useAction } from './redux';
@@ -57,14 +56,13 @@ export default App;
 
 const MainRouter = () => {
 
-  const [navOpen, setNavOpen] = useState<boolean>(true);
+  const [navOpen, setNavOpen] = useState<boolean>(false);
 
   return (
     <div className={styles.container}>
       <InpuBoxProvider>
         <>
         <Navigation navOpen={navOpen} setNavOpen={setNavOpen}/>        
-        <LoadingContextProvider>
         <div className={styles.content_div} style={navOpen ? { paddingLeft: `${NAV_WIDTH}px` } : { paddingLeft: `0px` }}>
           <Routes>
             <Route path='/main' element={<Main/>}/>
@@ -73,7 +71,6 @@ const MainRouter = () => {
           </Routes>
           <InputBox navOpen={navOpen}/>
         </div>
-        </LoadingContextProvider>
         </>
       </InpuBoxProvider>
     </div>

@@ -23,7 +23,7 @@ export const useChat = () => {
     const jsonBody: string = JSON.stringify(body);
 
     try {
-      const res: ServerRes = await axios.post(`${process.env.REACT_APP_SERVER_URL}`, jsonBody, {
+      const res: ServerRes = await axios.post(`${process.env.REACT_APP_SERVER_URL}/step1`, jsonBody, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -81,7 +81,7 @@ export const useChat = () => {
     const jsonBody: string = JSON.stringify(body);
 
     try {
-      const res: ServerRes = await axios.post(`${process.env.REACT_APP_SERVER_URL}`, jsonBody, {
+      const res: ServerRes = await axios.post(`${process.env.REACT_APP_SERVER_URL}/step2`, jsonBody, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -138,7 +138,7 @@ export const useChat = () => {
     const jsonBody: string = JSON.stringify(body);
 
     try {
-      const res: ServerRes = await axios.post(`${process.env.REACT_APP_SERVER_URL}`, jsonBody, {
+      const res: ServerRes = await axios.post(`${process.env.REACT_APP_SERVER_URL}/step3`, jsonBody, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -188,7 +188,7 @@ export const useChat = () => {
     const jsonBody: string = JSON.stringify(body);
 
     try {
-      const res: ServerRes = await axios.post(`${process.env.REACT_APP_SERVER_URL}`, jsonBody, {
+      const res: ServerRes = await axios.post(`${process.env.REACT_APP_SERVER_URL}/step4`, jsonBody, {
         headers: {
           'Content-Type': 'application/json'
         }

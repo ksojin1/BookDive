@@ -3,10 +3,12 @@ import styles from './Navigation.module.scss';
 import { useLocation, useNavigate } from "react-router-dom";
 import { NAV_WIDTH } from "../App";
 import { useAction, useUserInfo } from "../redux";
+import { PreModal } from "../page/Main";
 
 export const Navigation = ({ navOpen, setNavOpen } : { navOpen: boolean, setNavOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [preModalOpen, setPreModalOpen] = useState<boolean>(false);
 
   const handleNewChatClick = () => {
     return window.location.href = `${process.env.PUBLIC_URL}/chat`;
@@ -17,6 +19,7 @@ export const Navigation = ({ navOpen, setNavOpen } : { navOpen: boolean, setNavO
 
   return (
     <>
+    { preModalOpen && <PreModal setState={setPreModalOpen}/> }
     <div className={styles.menu_btn_div} style={{ width: `${NAV_WIDTH}px` }}>
       <span className="material-symbols-outlined" onClick={() => setNavOpen((prev) => !prev)}>menu</span>
       <h1>BOOKDIVE</h1>
@@ -37,7 +40,7 @@ export const Navigation = ({ navOpen, setNavOpen } : { navOpen: boolean, setNavO
             </div>
           )}
         </li>
-        <li className={location.pathname.includes('extension') ? styles.crt_menu : ''} onClick={() => navigate(`${process.env.PUBLIC_URL}/extension`)}>
+        <li className={location.pathname.includes('extension') ? styles.crt_menu : ''} onClick={() => setPreModalOpen(true)}>
           <p>책의 연장선</p>
           {location.pathname.includes('extension') && (
             <div className={styles.icon_div}>
