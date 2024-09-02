@@ -18,7 +18,7 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
   useEffect(() => {
     if (value.length > 30) {
       setStatus('error');
-    } else if (status !== 'disabled'){
+    } else if (status !== 'disabled' || (user && user.bubbleCnt >= MAX_BUBBLE)){
       setStatus('enabled');
     }
   }, [value]);
@@ -53,13 +53,13 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
           </p>
         </div>
       }
-      <div id={styles[status]} className={styles.input_div}>
-        {status !== 'disabled' && (
+      <div id={(user && user.bubbleCnt >= MAX_BUBBLE) ? styles.disabled : styles[status]} className={styles.input_div}>
+        {status !== 'disabled' && user && user.bubbleCnt >= MAX_BUBBLE && (
           <div className={styles.text_length} style={{ color: value.length > 30 ? '#ff0000' : '#7f7f7f' }}>
             {value.length > 30 ? 30 : value.length}/30자 이내
           </div>
         )}
-        {status === 'error' || status === 'disabled' ? (
+        {status === 'error' || status === 'disabled' || (user && user.bubbleCnt >= MAX_BUBBLE) ? (
           <span style={{ color: '#c9c9c9' }} className="material-symbols-rounded">send</span>
         ):(
           <span onClick={() => value !== '' && setSendFlag(true)} className="material-symbols-rounded">send</span>
@@ -67,7 +67,7 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
         
         <input 
           value={value}
-          disabled={status === 'disabled'} style={value.length > 30 ? { border: '1px solid #ff0000' } : {}} 
+          disabled={status === 'disabled' || (user && user.bubbleCnt >= MAX_BUBBLE) ? true : false} style={value.length > 30 ? { border: '1px solid #ff0000' } : {}} 
           type="text" 
           onChange={handleTextChange} maxLength={31} placeholder={placeholder} 
         />

@@ -23,7 +23,7 @@ export const Main = () => {
       <div className={styles.text_div}>
         <h1>안녕하세요</h1>
         <h2>최근에 읽으신 책에 대해<br/>어떤 이야기를 나누고 싶으신가요?</h2>
-        <span>예시보기</span>
+        {/* <span>예시보기</span> */}
       </div>
       <div className={styles.select_div}>
         <div onClick={() => navigate(`${process.env.PUBLIC_URL}/chat`)} style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/card01.svg)` }}>
@@ -42,18 +42,18 @@ export const Main = () => {
 
 export const PreModal = ({ setState }: { setState: React.Dispatch<React.SetStateAction<boolean>> }) => {
   return (
-    <Modal setState={setState} width={300}>
+    <Modal setState={setState} width={556}>
       <div className={styles.modal_container}>
         <h1>준비중인 기능이에요</h1>       
         <p>더 넓은 독서의 세계를 경험하실 수 있도록 열심히 기능을 개발중이에요.<br/>곧 다시 만나요!</p>
         <div className={styles.btn_div}>
-          <button onClick={() => setState(false)}>확인</button>
+          <button className={styles.confirm_btn} onClick={() => setState(false)}>확인</button>
         </div>
       </div>
     </Modal>
   );
 }
 
-export const ExModal = () => {
+export const SampleModal = () => {
   
 }

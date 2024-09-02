@@ -1,5 +1,5 @@
 @import '../css/variables.scss';
-
+@include modal_container;
 .container {
   width: $content_width;
   height: 407px;
@@ -45,11 +45,16 @@
       background-color: #c7e0d2;
     }
     > div {
+      cursor: pointer;
       width: 381px;      
       height: 286px;
       border-radius: 4px;
       padding: 24px;
       background-size: cover;
+      &:hover {
+        transform: translateY(-8px);
+        transition: transform cubic-bezier(0, 0, 0.38, 0.9) 0.3s;
+      }
       h3 {
         font-size: 20px;
         font-family: 'bold';

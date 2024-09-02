@@ -1,5 +1,5 @@
 @import '../css/variables.scss';
-
+@include modal_container;
 .menu_btn_div {
   position: absolute;
   top: 0px;
@@ -55,6 +55,9 @@
       border-radius: 4px;
       padding: 0px 10px;
       cursor: pointer;
+      &:hover {
+        background-color: #E6E6E6;
+      }
     }
     .crt_menu {
       background-color: #1b3e74;
@@ -81,6 +84,9 @@
           position: absolute;
           right: 10px;
         }
+      }
+      &:hover {
+        background-color: #183767;
       }
     }
   }

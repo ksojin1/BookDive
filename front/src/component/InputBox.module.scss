@@ -20,6 +20,23 @@
       }
     }
   }
+  .alert_div {
+    border-radius: 4px;
+    border: 1px solid #EDA0A0;
+    width: $content_width;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: white;
+    > h4 {
+      font-size: 16px;
+      font-family: 'bold';
+      margin-bottom: 12px;
+      color: #D23737;
+    }
+    > p {
+      font-size: 16px;
+    }
+  }
   .queryList_div {
     border-radius: 4px;
     border: 1px solid #c9c9c9;

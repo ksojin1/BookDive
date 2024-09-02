@@ -12,3 +12,45 @@ $content_width: 786px;
   -ms-user-select:none;
   user-select:none;
 }
+
+@mixin modal_container {
+  .modal_container {
+    h1 {
+      font-size: 20px;
+      font-family: 'bold';
+    }
+    p {
+      margin-top: 7px;
+      font-size: 16px;
+      color: #595959;
+      line-height: 24px;
+    }
+    .btn_div {
+      margin-top: 15px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      button {
+        padding: 12px 16px;
+        border-radius: 4px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+      .confirm_btn {
+        font-family: 'bold';
+        background-color: #1B3E74;
+        color: white;
+        &:hover {
+          background-color: #183767;
+        }
+      }
+      .cancel_btn {
+        background-color: white;
+        &:hover {
+          background-color: #F7F7F7;
+        }
+      }
+    }
+  }
+}

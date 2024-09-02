@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './App.module.scss';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { Intro } from './page/Intro';
 import { Main } from './page/Main';
 import { Chat } from './page/Chat';
@@ -16,6 +16,7 @@ export const NAV_WIDTH = 260;
 
 function App() {
 
+  const location = useLocation();
   const { saveUser } = useAction();
 
   const checkUser = () => {
@@ -40,7 +41,7 @@ function App() {
 
   useEffect(() => {
     checkUser();
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div className="App">
