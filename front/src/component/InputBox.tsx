@@ -15,6 +15,12 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
     setValue(newValue);
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && value !== '') {
+      setSendFlag(true);
+    }
+  }
+
   useEffect(() => {
     if (value.length > 30) {
       setStatus('error');
@@ -70,6 +76,7 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
           disabled={status === 'disabled' || (user && user.bubbleCnt >= MAX_BUBBLE) ? true : false} style={value.length > 30 ? { border: '1px solid #ff0000' } : {}} 
           type="text" 
           onChange={handleTextChange} maxLength={31} placeholder={placeholder} 
+          onKeyDown={handleKeyDown}
         />
         <p>BookDive는 인물 등에 관한 부정확한 정보를 표시할 수 있으므로 대답을 다시 한번 확인하세요.</p>
       </div>

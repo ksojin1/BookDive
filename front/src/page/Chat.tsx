@@ -210,7 +210,7 @@ export const Chat = () => {
               </div>
             )}
             <div className={styles.chat_div}>
-              {chat.type === "B" && <div className={styles.dive_logo}></div>}
+              {chat.type === "B" && <div className={styles.dive_logo}><img src={`${process.env.PUBLIC_URL}/img/Logo_Asset@1x.png`}/></div>}
               <div className={styles.text_div}>
                 {chat.type !== 'U' && <h4>{chat.type === 'B' ? '북다이브' : bookInfo.character}</h4>}
                 {chat.code === 0 ? (
