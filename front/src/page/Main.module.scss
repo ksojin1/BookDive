@@ -38,12 +38,6 @@
   .select_div {
     display: flex;
     justify-content: space-between;
-    > div:nth-child(1) {
-      background-color: #eef2d5;
-    }
-    > div:nth-child(2) {
-      background-color: #c7e0d2;
-    }
     > div {
       cursor: pointer;
       width: 381px;      
