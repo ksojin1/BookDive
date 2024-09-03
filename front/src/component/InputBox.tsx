@@ -4,6 +4,7 @@ import { useInputBox } from "../hook/useInputBox";
 import { NAV_WIDTH } from "../App";
 import { useUserInfo } from "../redux";
 import { MAX_BUBBLE } from "../page/Chat";
+import { useLocation } from "react-router-dom";
 
 export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
 
@@ -31,8 +32,6 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
   useEffect(() => {
     if (value.length > 30) {
       setStatus('error');
-    } else if (status !== 'disabled' || (user && user.bubbleCnt >= MAX_BUBBLE)){
-      setStatus('enabled');
     }
   }, [value]);
 
@@ -67,7 +66,7 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
         </div>
       }
       <div id={(user && user.bubbleCnt >= MAX_BUBBLE) ? styles.disabled : styles[status]} className={styles.input_div}>
-        {status !== 'disabled' && user && user.bubbleCnt >= MAX_BUBBLE && (
+        {status !== 'disabled' && user && user.bubbleCnt < MAX_BUBBLE && (
           <div className={styles.text_length} style={{ color: value.length > 30 ? '#ff0000' : '#7f7f7f' }}>
             {value.length > 30 ? 30 : value.length}/30자 이내
           </div>

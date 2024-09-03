@@ -15,7 +15,7 @@ export const Navigation = ({ navOpen, setNavOpen } : { navOpen: boolean, setNavO
   const handleNewChatClick = () => {
     setNewChatModal(true);
   }
-
+  
   // useEffect(() => {
   //   setNavOpen(false);
   // }, [location.pathname]);
