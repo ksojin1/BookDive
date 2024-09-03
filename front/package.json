@@ -1,6 +1,6 @@
 {
   "name": "bookdive",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
