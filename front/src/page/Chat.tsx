@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from './Chat.module.scss';
 import { useInputBox } from "../hook/useInputBox";
 import { BookInfo, ChatType } from "../type";
@@ -10,11 +10,13 @@ import { useNavigate } from "react-router-dom";
 export const MAX_BUBBLE = 15;
 
 export const Chat = () => {
+
   const { setStatus, setPlaceholder, setValue, sendFlag, setSendFlag, value, queryList, setQueryList } = useInputBox();
   const user = useUserInfo();
   const { chatStep1, chatStep2, chatStep3, chatStep4 } = useChat();
   const [expModal, setExpModal] = useState<boolean>(false);
   const [diveLoding, setDiveLoding] = useState<boolean>(false);
+  const messageBoxRef = useRef<HTMLDivElement>(null);
 
   const [bookInfo, setBookInfo] = useState<BookInfo>({
     type: '',
@@ -131,6 +133,9 @@ export const Chat = () => {
     setChatList([ ...newChatList ]);
     setStatus('enabled');
     setDiveLoding(false);
+    if (messageBoxRef.current) {
+      messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
+    }
   }
 
   useEffect(() => {
@@ -198,7 +203,7 @@ export const Chat = () => {
           <p>등장인물이 다이빙중 입니다.</p>
         </div>
       )}
-      <div className={styles.chat_wrap}>
+      <div className={styles.chat_wrap} ref={messageBoxRef}>
       {chatList.map((chat, idx) => {
         return (
           <div key={idx} id={styles[chat.type]}>

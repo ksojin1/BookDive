@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from './InputBox.module.scss';
 import { useInputBox } from "../hook/useInputBox";
 import { NAV_WIDTH } from "../App";
@@ -9,6 +9,7 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
 
   const user = useUserInfo();
   const { value, setValue, placeholder, setStatus, status, queryList, setSendFlag } = useInputBox();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.currentTarget.value;
@@ -20,6 +21,12 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
       setSendFlag(true);
     }
   }
+
+  useEffect(() => { 
+    if (status === 'enabled' && inputRef.current && !inputRef.current.disabled) {
+      inputRef.current.focus();
+    }
+  }, [status]);
 
   useEffect(() => {
     if (value.length > 30) {
@@ -72,6 +79,7 @@ export const InputBox = ({ navOpen } : { navOpen: boolean }) => {
         )}
         
         <input 
+          ref={inputRef}
           value={value}
           disabled={status === 'disabled' || (user && user.bubbleCnt >= MAX_BUBBLE) ? true : false} style={value.length > 30 ? { border: '1px solid #ff0000' } : {}} 
           type="text" 
