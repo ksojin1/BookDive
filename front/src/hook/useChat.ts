@@ -12,9 +12,10 @@ export const useChat = () => {
     console.log('서버요청 > step1');
 
     if (!user?.id) return { code: -99, msg: 'step1 > 사용자 정보가 없습니다.' };
+    const chatCnt = localStorage.getItem('chatCnt');
 
     const body: ReqBody = {
-      userId: user.id,
+      userId: `${user.id}_${chatCnt}`,
       book: '',
       bookType: '',
       character: '',
@@ -70,9 +71,10 @@ export const useChat = () => {
     console.log('서버요청 > step2');
 
     if (!user?.id) return { code: -99, msg: 'step2 > 사용자 정보가 없습니다.' };
+    const chatCnt = localStorage.getItem('chatCnt');
 
     const body: ReqBody = {
-      userId: user.id,
+      userId: `${user.id}_${chatCnt}`,
       book,
       bookType,
       character: '',
@@ -127,9 +129,10 @@ export const useChat = () => {
     console.log('서버요청 > step3');
 
     if (!user?.id) return { code: -99, msg: 'step3 > 사용자 정보가 없습니다.' };
+    const chatCnt = localStorage.getItem('chatCnt');
 
     const body: ReqBody = {
-      userId: user.id,
+      userId: `${user.id}_${chatCnt}`,
       book,
       bookType,
       character,
@@ -177,9 +180,10 @@ export const useChat = () => {
     console.log('서버요청 > step4');
 
     if (!user?.id) return { code: -99, msg: 'step4 > 사용자 정보가 없습니다.' };
+    const chatCnt = localStorage.getItem('chatCnt');
 
     const body: ReqBody = {
-      userId: user.id,
+      userId: `${user.id}_${chatCnt}`,
       book,
       bookType,
       character,
