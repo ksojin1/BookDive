@@ -133,6 +133,7 @@ export const Chat = () => {
     setChatList([ ...newChatList ]);
     setStatus('enabled');
     setDiveLoding(false);
+    setSendFlag(false);
     if (messageBoxRef.current) {
       messageBoxRef.current.scrollTop = messageBoxRef.current.scrollHeight;
     }
@@ -182,7 +183,6 @@ export const Chat = () => {
 
       // api 요청
       sendMsg(newChatList);
-      setSendFlag(false);
     }
   }, [sendFlag]);
 
