@@ -68,7 +68,7 @@ export const Chat = () => {
       if (payload.code === 100 && payload.text && payload.character) {
 
         newChatList[newChatList.length-1] = { 
-          step: chatList[chatList.length-1].step+1, code: 101, type: "C", text: payload.text,
+          step: chatList[chatList.length-1].step+1, code: payload.code, type: "C", text: payload.text,
         };
 
         setBookInfo({
@@ -172,7 +172,9 @@ export const Chat = () => {
       let newChatList: ChatType[] = [ 
         ...chatList, 
         { step, code: 100, type: "U", text: value },
-        { step, code: 0, type: chatType, text: '' } // 답변중
+
+        // 답변중 - step2는 입력중 표시안함 (-1)
+        { step, code: step === 2 ? -1 : 0, type: chatType, text: '' } 
       ];
 
       setChatList([ ...newChatList]);
@@ -207,25 +209,27 @@ export const Chat = () => {
       {chatList.map((chat, idx) => {
         return (
           <div key={idx} id={styles[chat.type]}>
-            {chat.step === 3 && chat.type === 'C' && chat.code === 101 && (
+            {chat.step === 3 && chat.type === 'C' && chat.code === 100 && (
               <div className={styles.character_chat_start}>
                 <span></span>
                 <p>{bookInfo.type === '문학' ? '등장인물과' : '저자와'} 대화를 시작할게요.</p>
                 <span></span>
               </div>
             )}
-            <div className={styles.chat_div}>
-              {chat.type === "B" && <div className={styles.dive_logo}><img src={`${process.env.PUBLIC_URL}/img/Logo_Asset@1x.png`}/></div>}
-              <div className={styles.text_div}>
-                {chat.type !== 'U' && <h4>{chat.type === 'B' ? '북다이브' : bookInfo.character}</h4>}
-                {chat.code === 0 ? (
-                  <p style={{ color: '#262626'}}>입력 중...</p>
-                  ) :(
-                    <p>{chat.text}</p>
-                  )}
-                
+            
+            {chat.code !== -1 && (
+              <div className={styles.chat_div}>
+                {chat.type === "B" && <div className={styles.dive_logo}><img src={`${process.env.PUBLIC_URL}/img/Logo_Asset@1x.png`}/></div>}
+                <div className={styles.text_div}>
+                  {chat.type !== 'U' && <h4>{chat.type === 'B' ? '북다이브' : bookInfo.character}</h4>}
+                  {chat.code === 0 ? (
+                    <p style={{ color: '#262626'}}>입력 중...</p>
+                    ) :(
+                      <p>{chat.text}</p>
+                    )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         );
       })}
